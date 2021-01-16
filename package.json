@@ -1,0 +1,33 @@
+{
+  "name": "sellix",
+  "version": "1.0.0",
+  "description": "An API Wrapper for Sellix",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stefanuk12/Sellix.git"
+  },
+  "keywords": [
+    "sellix",
+    "api",
+    "wrapper",
+    "typescript",
+    "javascript"
+  ],
+  "author": "Stefanuk12",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Stefanuk12/Sellix/issues"
+  },
+  "homepage": "https://github.com/Stefanuk12/Sellix#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "got": "^11.8.1"
+  }
+}
