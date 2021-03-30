@@ -53,11 +53,10 @@ export class Sellix {
     // Verify is a webhook is legit
     verifyWebhook(xSellixSignature: string, webhookSecret: string, requestBody: Object){
         // Generate Hmac
-        const generatedHmac = crypto.createHmac('sha512', webhookSecret)
-        .update(JSON.stringify(requestBody))
-        .digest('base64');
+        const generatedHmac = crypto.createHmac('sha512', webhookSecret).update(JSON.stringify(requestBody)).digest('hex');
 
         // Return
-        return this.hashEquals(generatedHmac, xSellixSignature);
+        const isValid = this.hashEquals(generatedHmac, xSellixSignature);
+        return isValid
     };
 };
