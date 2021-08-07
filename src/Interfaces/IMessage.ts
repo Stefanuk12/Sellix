@@ -1,5 +1,5 @@
 export interface IMessage {
-    posted_by: string;
-    content: string;
+    posted_by: string
+    content: string
     created_at: string
 }
