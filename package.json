@@ -1,6 +1,6 @@
 {
   "name": "sellix",
-  "version": "1.0.1",
+  "version": "1.1",
   "description": "An API Wrapper for Sellix",
   "main": "index.js",
   "directories": {
@@ -27,7 +27,10 @@
   },
   "homepage": "https://github.com/Stefanuk12/Sellix#readme",
   "dependencies": {
-    "crypto": "^1.0.1",
+    "express": "^4.17.3",
     "got": "^11.8.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13"
   }
 }
