@@ -1,0 +1,1 @@
+{"version":3,"file":"ICryptoTransaction.d.ts","sourceRoot":"","sources":["../../src/Interfaces/ICryptoTransaction.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,kBAAkB;IAC/B,aAAa,EAAE,MAAM,CAAA;IACrB,IAAI,EAAE,MAAM,CAAA;IACZ,aAAa,EAAE,MAAM,CAAA;IACrB,UAAU,EAAE,MAAM,CAAA;IAClB,UAAU,EAAE,MAAM,CAAA;CACrB"}

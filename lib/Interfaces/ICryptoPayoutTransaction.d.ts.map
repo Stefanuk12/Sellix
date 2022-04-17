@@ -1,0 +1,1 @@
+{"version":3,"file":"ICryptoPayoutTransaction.d.ts","sourceRoot":"","sources":["../../src/Interfaces/ICryptoPayoutTransaction.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,wBAAwB;IACrC,UAAU,EAAE,MAAM,CAAA;IAClB,aAAa,EAAE,MAAM,CAAA;IACrB,aAAa,EAAE,MAAM,CAAA;IACrB,IAAI,EAAE,MAAM,CAAA;IACZ,UAAU,EAAE,IAAI,CAAA;CACnB"}
