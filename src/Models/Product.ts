@@ -150,7 +150,7 @@ export class Product {
     // Retrieves a Product by ID
     static async getByID(id: string){
         // Convert
-        const response = JSON.parse(await Sellix.HttpClient.get(`products/${id}`).body)
+        const response = JSON.parse((await Sellix.HttpClient.get(`products/${id}`)).body)
         const product = new Product(response)
 
         // Return

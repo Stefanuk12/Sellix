@@ -135,7 +135,7 @@ export class Order {
     // Retrieves an Order by Uniqid.
     static async getByID(id: number){
         // Convert
-        const response = JSON.parse(await Sellix.HttpClient.get(`orders/${id}`).body)
+        const response = JSON.parse((await Sellix.HttpClient.get(`orders/${id}`)).body)
         const order = new Order(response)
 
         //

@@ -71,7 +71,7 @@ export class Blacklist {
     // Retrieves a Blacklist by ID
     static async getByID(id: string){
         // Convert
-        const response = JSON.parse(await Sellix.HttpClient.get(`blacklist/${id}`).body)
+        const response = JSON.parse((await Sellix.HttpClient.get(`blacklist/${id}`)).body)
         const blacklist = new Blacklist(response)
 
         // Return

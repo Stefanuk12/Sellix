@@ -73,7 +73,7 @@ export class Category {
     // Retrieves a Category by Uniqid
     static async getByID(id: number){
         // Convert
-        const response = JSON.parse(await Sellix.HttpClient.get(`categories/${id}`).body)
+        const response = JSON.parse((await Sellix.HttpClient.get(`categories/${id}`)).body)
         const category = new Category(response)
 
         // Return

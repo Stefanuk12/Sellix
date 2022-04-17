@@ -73,7 +73,7 @@ export class Coupon {
     // Retrieves a Coupon by Uniqid.
     static async getByID(id: number){
         // Convert
-        const response = JSON.parse(await Sellix.HttpClient.get(`coupons/${id}`).body)
+        const response = JSON.parse((await Sellix.HttpClient.get(`coupons/${id}`)).body)
         const coupon = new Coupon(response)
 
         //

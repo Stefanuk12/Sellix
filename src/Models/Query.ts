@@ -47,7 +47,7 @@ export class Query {
     // Retrieves a Query by Uniqid.
     static async getByID(Uniqid: number){
         // Convert
-        const response = JSON.parse(await Sellix.HttpClient.get(`queries/${Uniqid}`).body)
+        const response = JSON.parse((await Sellix.HttpClient.get(`queries/${Uniqid}`)).body)
         const query = new Query(response)
 
         // Return

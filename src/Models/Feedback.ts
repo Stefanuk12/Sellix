@@ -54,7 +54,7 @@ export class Feedback {
     // Retrieves a Feedback by Uniqid.
     static async getByID(id: number){
         // Convert
-        const response = JSON.parse(await Sellix.HttpClient.get(`feedback/${id}`).body)
+        const response = JSON.parse((await Sellix.HttpClient.get(`feedback/${id}`)).body)
         const feedback = new Feedback(response)
 
         // Return
