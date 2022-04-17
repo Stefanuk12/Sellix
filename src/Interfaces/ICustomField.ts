@@ -3,3 +3,6 @@ export interface ICustomField {
     type: string
     required: boolean
 }
+export interface ICustomFieldObj {
+    [key: string]: string
+}
