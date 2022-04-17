@@ -1,68 +1,10 @@
 // Dependencies
-import { Sellix, StandardHttpResponse } from ".."
-
-type IBlacklistType = "email" | "ip" | "country"
-
-// Interfaces
-interface IBlacklist {
-    id: number
-    uniqid: string
-    shop_id: string
-    type: IBlacklistType
-    data: string
-    note: string
-    created_at: Date
-    updated_at: Date
-    updated_by: number
-}
-
-interface IBlacklistCreate {
-    type: IBlacklistType
-    data: string
-    note?: string
-}
-
-interface IBlacklistCreateResponseData {
-    uniqid: string
-}
-interface IBlacklistCreateResponse extends StandardHttpResponse {
-    data: IBlacklistCreateResponseData
-}
-
-interface IBlacklistEdit {
-    uniqid: number
-    type: IBlacklistType
-    data: string
-    note: string
-}
-
-interface IBlacklistEditResponseData {
-    uniqid: string
-}
-interface IBlacklistEditResponse extends StandardHttpResponse {
-    data: IBlacklistEditResponseData
-}
-
-interface IBlacklistDeleteData {
-    uniqid: string
-}
-interface IBlacklistDeleteResponse extends StandardHttpResponse {
-    data: IBlacklistDeleteData
-}
+import { Sellix } from ".."
+import { IBlacklist, IBlacklistCreate, IBlacklistCreateResponse, IBlacklistDeleteResponse, IBlacklistEdit, IBlacklistEditResponse } from "../Interfaces/IBlacklist"
 
 //
-export class Blacklist {
-    // Vars
-    id?: number
-    uniqid?: string
-    shop_id?: string
-    type?: string
-    data?: string
-    note?: string
-    created_at?: Date
-    updated_at?: Date
-    updated_by?: number
-
+export interface Blacklist extends IBlacklist {}
+export class Blacklist  {
     // Constructor
     constructor(Data: IBlacklist){
         Object.assign(this, Data)

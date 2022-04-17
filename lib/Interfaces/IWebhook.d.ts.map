@@ -1,1 +1,0 @@
-{"version":3,"file":"IWebhook.d.ts","sourceRoot":"","sources":["../../src/Interfaces/IWebhook.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,QAAQ;IACrB,MAAM,EAAE,MAAM,CAAA;IACd,GAAG,EAAE,MAAM,CAAA;IACX,KAAK,EAAE,MAAM,CAAA;IACb,OAAO,EAAE,MAAM,CAAA;IACf,aAAa,EAAE,MAAM,CAAA;IACrB,UAAU,EAAE,IAAI,CAAA;CACnB"}

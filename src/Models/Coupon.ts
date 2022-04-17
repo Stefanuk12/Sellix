@@ -1,70 +1,10 @@
 // Dependencies
 import { Product, Sellix, StandardHttpResponse } from ".."
-
-// Interfaces
-type useType = 0 | 1
-interface ICoupon {
-    id: number
-    uniqid: string
-    shop_id: number
-    code: string
-    use_type: useType
-    discount: number
-    used: number
-    max_uses: number
-    products_bound: Product[]
-    product_count: number
-    created_at: Date
-    updated_at: Date
-    updated_by: number
-}
-
-interface ICouponCreate {
-    code: string
-    discount_value: number
-    max_uses?: number
-    products_bound?: string[]
-}
-
-interface ICouponCreateResponseData {
-    uniqid: string
-}
-interface ICouponCreateResponse extends StandardHttpResponse {
-    data: ICouponCreateResponseData
-}
-
-interface ICouponEdit {
-    uniqid: number
-    code: string
-    discount_value: number
-    max_uses: number
-    products_bound: string[]
-}
-
-interface ICouponEditResponseData {
-    uniqid: string
-}
-interface ICouponEditResponse extends StandardHttpResponse {
-    data: ICouponEditResponseData
-}
+import { ICoupon, ICouponCreate, ICouponCreateResponse, ICouponEdit, ICouponEditResponse, useType } from "../Interfaces/ICoupon"
 
 //
+export interface Coupon extends ICoupon {}
 export class Coupon {
-    // Vars
-    id?: number
-    uniqid?: string
-    shop_id?: number
-    code?: string
-    use_type?: useType
-    discount?: number
-    used?: number
-    max_uses?: number
-    products_bound?: Product[]
-    product_count?: number
-    created_at?: Date
-    updated_at?: Date
-    updated_by?: number
-
     // Constructor
     constructor(Data: ICoupon){
         Object.assign(this, Data)

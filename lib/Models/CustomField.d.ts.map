@@ -1,1 +1,0 @@
-{"version":3,"file":"CustomField.d.ts","sourceRoot":"","sources":["../../src/Models/CustomField.ts"],"names":[],"mappings":"AACA,UAAU,YAAY;IAClB,IAAI,EAAE,MAAM,CAAA;IACZ,IAAI,EAAE,MAAM,CAAA;IACZ,QAAQ,EAAE,OAAO,CAAA;CACpB;AAGD,qBAAa,WAAW;IAEpB,IAAI,EAAE,MAAM,CAAA;IACZ,IAAI,EAAE,MAAM,CAAA;IACZ,QAAQ,EAAE,OAAO,CAAA;gBAGL,IAAI,EAAE,YAAY;CAKjC"}

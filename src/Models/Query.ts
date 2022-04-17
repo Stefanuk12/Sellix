@@ -1,44 +1,10 @@
 // Dependencies
-import { Sellix, StandardHttpResponse } from ".."
-import { IMessage2 } from "../Interfaces/IMessage2"
-
-// Interfaces
-interface IQuery {
-    id: number
-    uniqid: string
-    customer_email: string
-    shop_id: number
-    title: string
-    status: string
-    messages: IMessage2[]
-    day_value: number
-    month: string
-    year: number
-    created_at: Date
-    updated_at: Date
-    updated_by: number
-}
-
-interface IQueryReplyResponse extends StandardHttpResponse {}
-interface IQueryCloseResponse extends StandardHttpResponse {}
+import { Sellix } from ".."
+import { IQuery, IQueryCloseResponse, IQueryReplyResponse } from "../Interfaces/IQuery"
 
 // Class
+export interface Query extends IQuery {}
 export class Query {
-    // Vars
-    id?: number
-    uniqid?: string
-    customer_email?: string
-    shop_id?: number
-    title?: string
-    status?: string
-    messages?: IMessage2[]
-    day_value?: number
-    month?: string
-    year?: number
-    created_at?: Date
-    updated_at?: Date
-    updated_by?: number 
-
     // Constructor
     constructor(Data: IQuery){
         Object.assign(this, Data)

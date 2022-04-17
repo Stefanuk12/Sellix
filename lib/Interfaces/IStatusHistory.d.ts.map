@@ -1,1 +1,0 @@
-{"version":3,"file":"IStatusHistory.d.ts","sourceRoot":"","sources":["../../src/Interfaces/IStatusHistory.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,cAAc;IAC3B,UAAU,EAAE,MAAM,CAAA;IAClB,OAAO,EAAE,MAAM,CAAA;IACf,EAAE,EAAE,MAAM,CAAA;IACV,UAAU,EAAE,MAAM,CAAA;IAClB,MAAM,EAAE,MAAM,CAAA;CACjB"}

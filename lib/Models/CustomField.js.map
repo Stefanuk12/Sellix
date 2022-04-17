@@ -1,1 +1,0 @@
-{"version":3,"file":"CustomField.js","sourceRoot":"","sources":["../../src/Models/CustomField.ts"],"names":[],"mappings":";;;AAOA,EAAE;AACF,MAAa,WAAW;IAMpB,cAAc;IACd,YAAY,IAAkB;QAC1B,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC,IAAI,CAAA;QACrB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC,IAAI,CAAA;QACrB,IAAI,CAAC,QAAQ,GAAG,IAAI,CAAC,QAAQ,CAAA;IACjC,CAAC;CACJ;AAZD,kCAYC"}

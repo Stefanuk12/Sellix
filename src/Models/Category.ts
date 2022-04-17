@@ -1,72 +1,12 @@
 // Dependencies
-import { Product, Sellix, StandardHttpResponse } from ".."
-
-// Interfaces
-type ICategoryUnlisted = 0 | 1
-interface ICategory {
-    id: number
-    uniqid: string
-    shop_id: number
-    title: string
-    unlisted: ICategoryUnlisted
-    sort_priority: number
-    products_bound: Product[]
-    product_count: number
-    created_at: Date
-    updated_at: Date
-    updated_by: number
-}
-
-interface ICategoryCreate {
-    title: string
-    unlisted?: boolean
-    sort_priority?: string
-    products_bound?: string[]
-}
-
-interface ICategoryCreateResponseData {
-    uniqid: string
-}
-interface ICategoryCreateResponse {
-    data: ICategoryCreateResponseData
-}
-
-interface ICategoryEdit {
-    uniqid: number
-    title: string
-    unlisted: boolean
-    sort_priority: string
-    products_bound: string[]
-}
-
-interface ICategoryEditResponseData {
-    uniqid: string
-}
-interface ICategoryEditResponse {
-    data: ICategoryEditResponseData
-}
-
-interface ICategoryDeleteResponse extends StandardHttpResponse {
-    data: null
-}
+import { Product, Sellix } from ".."
+import { ICategory, ICategoryCreate, ICategoryCreateResponse, ICategoryDeleteResponse, ICategoryEdit, ICategoryEditResponse } from "../Interfaces/ICategory"
 
 //
+export interface Category extends ICategory {}
 export class Category {
-    // Vars
-    id?: number
-    uniqid?: string
-    shop_id?: number
-    title?: string
-    unlisted?: ICategoryUnlisted
-    sort_priority?: number
-    products_bound?: Product[]
-    product_count?: number
-    created_at?: Date
-    updated_at?: Date
-    updated_by?: number
-
     // Constructor
-    constructor(Data: ICategoryUnlisted){
+    constructor(Data: ICategory){
         Object.assign(this, Data)
     }
 

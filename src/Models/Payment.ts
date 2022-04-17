@@ -1,29 +1,8 @@
 // I DONT KNOW HOW TO TYPE THIS PROPERLY :(
 
 // Dependencies
-import { Sellix, StandardHttpResponse } from ".."
-import { CustomField } from "./CustomField"
-
-// Interfaces
-interface IPayment {
-    title: string
-    product_id: string
-    quantity: number
-    gateway: string
-    value: number
-    email: string
-    return_url: string
-    confirmations?: number
-    custom_fields?: CustomField[]
-    white_label?: boolean
-}
-
-interface IPaymentCreateResponseData {
-    url: string
-}
-interface IPaymentCreateResponse extends StandardHttpResponse {
-    data: IPaymentCreateResponseData
-}
+import { Sellix } from ".."
+import { IPayment, IPaymentCreateResponse } from "../Interfaces/IPayment"
 
 export class Payment {
     // Constructor

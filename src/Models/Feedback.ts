@@ -1,51 +1,10 @@
 // Dependencies
-import { Product, Sellix, StandardHttpResponse } from ".."
-
-// Interfaces
-type FeedbackScore = 1 | 2 | 3 | 4 | 5
-interface IFeedback {
-    id: number
-    uniqid: string
-    invoice_id: number
-    product_id: string
-    shop_id: number
-    message: string
-    reply: string
-    feedback: string
-    score: FeedbackScore
-    invoice: Object
-    product: Product
-    products_bound: Object
-    product_count: number
-    created_at: Date
-    updated_at: Date
-    updated_by: number
-}
-
-interface IFeedbackReplyResponse extends StandardHttpResponse {
-    data: null
-}
+import { Sellix } from ".."
+import { IFeedback, IFeedbackReplyResponse } from "../Interfaces/IFeedback"
 
 //
+export interface Feedback extends IFeedback {}
 export class Feedback {
-    // Vars
-    id?: number
-    uniqid?: string
-    invoice_id?: number
-    product_id?: string
-    shop_id?: number
-    message?: string
-    reply?: string
-    feedback?: string
-    score?: FeedbackScore
-    invoice?: Object
-    product?: Product
-    products_bound?: Object
-    product_count?: number
-    created_at?: Date
-    updated_at?: Date
-    updated_by?: number
-
     // Constructor
     constructor(Data: IFeedback){
         Object.assign(this, Data)
