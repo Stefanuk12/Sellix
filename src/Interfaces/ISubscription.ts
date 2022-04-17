@@ -14,11 +14,12 @@ export interface ISubscription {
     status: SubscriptionStatus
     gateway: string
     custom_fields: ICustomFieldObj
+    customer_email: string
     customer_id: number
     stripe_customer_id?: string
     stripe_account?: string
     stripe_subscription_id?: string
-    coupon_id?: string
+    coupon_id: string | null
     current_period_end: number,
     upcoming_email_1_week_sent: boolean
     trial_period_ending_email_sent: boolean
