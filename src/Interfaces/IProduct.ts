@@ -1,8 +1,9 @@
 // Dependencies
-
 import { StandardHttpResponse } from ".."
 import { CustomField } from "../Models/CustomField"
 import { UserFeedback } from "../Models/UserFeedback"
+import { TCurrency } from "../Types/TCurrency"
+import { TGateway } from "../Types/TGateway"
 
 // Interfaces
 export interface IProduct {
@@ -12,7 +13,7 @@ export interface IProduct {
     name: string
     price: number
     price_display: number
-    currency: string
+    currency: TCurrency
     title: string
     image_name: string
     image_storage: string
@@ -26,7 +27,7 @@ export interface IProduct {
     service_text: string
     custom_fields: CustomField[]
     type: string
-    gateways: string[]
+    gateways: TGateway[]
     crypto_confirmations_needed: number
     max_risk_level: number
     block_vpn_proxies: boolean
@@ -70,10 +71,10 @@ export interface IProductCreateEdit {
     title: string
     description: string
     price: number
-    gateways: string[]
+    gateways: TGateway[]
     type: string
     discount_value: string
-    currency: string
+    currency: TCurrency
     quantity: IQuantity
     stock_delimiter: string
     serials: string[]

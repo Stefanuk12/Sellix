@@ -1,15 +1,13 @@
 // Dependencies
 import { StandardHttpResponse } from ".."
-
-// Types
-export type IBlacklistType = "email" | "ip" | "country"
+import { TType } from "../Types/TType"
 
 // Interfaces
 export interface IBlacklist {
     id: number
     uniqid: string
     shop_id: string
-    type: IBlacklistType
+    type: TType
     data: string
     note: string
     created_at: Date
@@ -18,7 +16,7 @@ export interface IBlacklist {
 }
 
 export interface IBlacklistCreate {
-    type: IBlacklistType
+    type: TType
     data: string
     note?: string
 }
@@ -32,7 +30,7 @@ export interface IBlacklistCreateResponse extends StandardHttpResponse {
 
 export interface IBlacklistEdit {
     uniqid: number
-    type: IBlacklistType
+    type: TType
     data: string
     note: string
 }

@@ -1,6 +1,7 @@
 // MIGHT BE INCOMPLETE, DOCS DONT PROVIDE ENOUGH DETAIL
 
 // Dependencies
+import { TGateway } from "../Types/TGateway"
 import { ICustomFieldObj } from "./ICustomField"
 
 // Types
@@ -12,7 +13,7 @@ export interface ISubscription {
     shop_id: number
     product_id: string
     status: SubscriptionStatus
-    gateway: string
+    gateway: TGateway
     custom_fields: ICustomFieldObj
     customer_email: string
     customer_id: number

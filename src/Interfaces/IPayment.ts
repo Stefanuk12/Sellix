@@ -3,13 +3,14 @@
 // Dependencies
 import { StandardHttpResponse } from ".."
 import { CustomField } from "../Models/CustomField"
+import { TGateway } from "../Types/TGateway"
 
 // Interfaces
 export interface IPayment {
     title: string
     product_id: string
     quantity: number
-    gateway: string
+    gateway: TGateway
     value: number
     email: string
     return_url: string

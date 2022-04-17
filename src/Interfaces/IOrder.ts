@@ -6,6 +6,7 @@ import { IPayPalDispute } from "../Interfaces/IPayPalDispute"
 import { IStatusHistory } from "../Interfaces/IStatusHistory"
 import { IWebhook } from "../Interfaces/IWebhook"
 import { Product } from "../Models/Product"
+import { TGateway } from "../Types/TGateway"
 
 //
 export interface IOrder {
@@ -21,7 +22,7 @@ export interface IOrder {
     product_type: string
     product_title: string
     file_attachment_uniqid: string
-    gateway: string
+    gateway: TGateway
     paypal_email: string
     paypal_order_id: string
     paypal_payer_email: string
