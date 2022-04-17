@@ -7,11 +7,14 @@ import { NextFunction, Request, response, Response } from "express"
 export { Blacklist } from "./Models/Blacklist"
 export { Category } from "./Models/Category"
 export { Coupon } from "./Models/Coupon"
+export { CustomField } from "./Models/CustomField"
 export { Feedback } from "./Models/Feedback"
 export { Order } from "./Models/Order"
 export { Payment } from "./Models/Payment"
 export { Product } from "./Models/Product"
 export { Query } from "./Models/Query"
+export { Subscription } from "./Models/Subscription"
+export { UserFeedback } from "./Models/UserFeedback"
 
 //
 export interface StandardHttpResponse {
