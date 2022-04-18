@@ -60,7 +60,7 @@ export interface IOrder {
     year: number
     created_at: string
     serials: string[]
-    status_histroy: IStatusHistory[]
+    status_history: IStatusHistory[]
     paypal_dispute: IPayPalDispute
     file: IFile
     webhooks: IWebhook[]

@@ -1,6 +1,6 @@
 {
   "name": "sellix",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "An API Wrapper for Sellix",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
