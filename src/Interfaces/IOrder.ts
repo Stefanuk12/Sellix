@@ -23,6 +23,7 @@ export interface IOrder {
     product_title: string
     file_attachment_uniqid: string
     gateway: TGateway
+    customer_email: string
     paypal_email: string
     paypal_order_id: string
     paypal_payer_email: string
