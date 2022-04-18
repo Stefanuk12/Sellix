@@ -4,6 +4,7 @@
 import { TGateway } from "../Types/TGateway"
 import { TSubscriptionStatus } from "../Types/TSubscriptionStatus"
 import { ICustomFieldObj } from "./ICustomField"
+import { IInvoice } from "./IInvoice"
 
 // Interfaces
 export interface ISubscription {
@@ -23,7 +24,7 @@ export interface ISubscription {
     upcoming_email_1_week_sent: boolean
     trial_period_ending_email_sent: boolean
     renewal_invoice_created: boolean
-    invoices: Object[]
+    invoices: IInvoice[]
     created_at: number
     canceled_at: number
 }

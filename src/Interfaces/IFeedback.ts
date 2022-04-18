@@ -1,6 +1,7 @@
 // Dependencies
 import { StandardHttpResponse } from ".."
 import { TFeedbackScore } from "../Types/TFeedbackScore"
+import { IInvoice } from "./IInvoice"
 import { IProduct } from "./IProduct"
 
 // Interfaces
@@ -14,7 +15,7 @@ export interface IFeedback {
     reply: string
     feedback: string
     score: TFeedbackScore
-    invoice: Object
+    invoice: IInvoice
     product: IProduct
     products_bound: IProduct[]
     product_count: number
