@@ -2,17 +2,15 @@
 
 // Dependencies
 import { TGateway } from "../Types/TGateway"
+import { TSubscriptionStatus } from "../Types/TSubscriptionStatus"
 import { ICustomFieldObj } from "./ICustomField"
-
-// Types
-export type SubscriptionStatus = "PENDING" | "CANCELED" | "TRIALING" | "ACTIVE"
 
 // Interfaces
 export interface ISubscription {
     id: string
     shop_id: number
     product_id: string
-    status: SubscriptionStatus
+    status: TSubscriptionStatus
     gateway: TGateway
     custom_fields: ICustomFieldObj
     customer_email: string

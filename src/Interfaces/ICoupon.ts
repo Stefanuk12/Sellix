@@ -1,9 +1,7 @@
 // Dependencies
 import { StandardHttpResponse } from ".."
-import { Product } from "../Models/Product"
-
-// Types
-export type useType = 0 | 1
+import { UseType } from "../Types/TUseType"
+import { IProduct } from "./IProduct"
 
 // Interfaces
 export interface ICoupon {
@@ -11,14 +9,14 @@ export interface ICoupon {
     uniqid: string
     shop_id: number
     code: string
-    use_type: useType
+    use_type: UseType
     discount: number
     used: number
     max_uses: number
-    products_bound: Product[]
+    products_bound: IProduct[]
     product_count: number
-    created_at: Date
-    updated_at: Date
+    created_at: string
+    updated_at: string
     updated_by: number
 }
 

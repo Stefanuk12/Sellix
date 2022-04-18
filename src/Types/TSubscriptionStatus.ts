@@ -1,0 +1,1 @@
+export type TSubscriptionStatus = "PENDING" | "CANCELED" | "TRIALING" | "ACTIVE"

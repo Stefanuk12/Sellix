@@ -10,8 +10,8 @@ export interface IBlacklist {
     type: TType
     data: string
     note: string
-    created_at: Date
-    updated_at: Date
+    created_at: string
+    updated_at: string
     updated_by: number
 }
 

@@ -1,9 +1,9 @@
 // Dependencies
 import { StandardHttpResponse } from ".."
-import { CustomField } from "../Models/CustomField"
-import { UserFeedback } from "../Models/UserFeedback"
 import { TCurrency } from "../Types/TCurrency"
 import { TGateway } from "../Types/TGateway"
+import { ICustomField } from "./ICustomField"
+import { IUserFeedback } from "./IUserFeedback"
 
 // Interfaces
 export interface IProduct {
@@ -25,7 +25,7 @@ export interface IProduct {
     quantity_warning: number
     delivery_text: string
     service_text: string
-    custom_fields: CustomField[]
+    custom_fields: ICustomField[]
     type: string
     gateways: TGateway[]
     crypto_confirmations_needed: number
@@ -42,13 +42,13 @@ export interface IProduct {
     terms_of_service: string
     warranty: number
     warranty_text: string
-    created_at: Date
-    updated_at: Date
+    created_at: string
+    updated_at: string
     updated_by: number
     file_attachment_info: Object
     image_attachment_info: Object
     webhooks: string[]
-    feedback: UserFeedback[]
+    feedback: IUserFeedback[]
 }
 
 export interface IProductCreateResponseData {
@@ -82,7 +82,7 @@ export interface IProductCreateEdit {
     delivery_text: string
     service_text: string
     stock: number
-    custom_fields: CustomField[]
+    custom_fields: ICustomField[]
     crypto_confirmations_needed: number
     max_risk_level: number
     block_vpn_proxies: boolean

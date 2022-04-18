@@ -3,5 +3,5 @@ export interface ICryptoPayoutTransaction {
     from_adddress: string
     crypto_amount: number
     hash: string
-    created_at: Date
+    created_at: string
 }

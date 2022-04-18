@@ -4,5 +4,5 @@ export interface IWebhook {
     event: string
     retries: string
     response_code: number
-    created_at: Date
+    created_at: string
 }

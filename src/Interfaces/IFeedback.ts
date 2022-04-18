@@ -1,8 +1,7 @@
 // Dependencies
-import { Product, StandardHttpResponse } from ".."
-
-// Types
-export type FeedbackScore = 1 | 2 | 3 | 4 | 5
+import { StandardHttpResponse } from ".."
+import { TFeedbackScore } from "../Types/TFeedbackScore"
+import { IProduct } from "./IProduct"
 
 // Interfaces
 export interface IFeedback {
@@ -14,13 +13,13 @@ export interface IFeedback {
     message: string
     reply: string
     feedback: string
-    score: FeedbackScore
+    score: TFeedbackScore
     invoice: Object
-    product: Product
-    products_bound: Object
+    product: IProduct
+    products_bound: IProduct[]
     product_count: number
-    created_at: Date
-    updated_at: Date
+    created_at: string
+    updated_at: string
     updated_by: number
 }
 

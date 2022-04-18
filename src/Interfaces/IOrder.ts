@@ -5,8 +5,9 @@ import { IFile } from "../Interfaces/IFile"
 import { IPayPalDispute } from "../Interfaces/IPayPalDispute"
 import { IStatusHistory } from "../Interfaces/IStatusHistory"
 import { IWebhook } from "../Interfaces/IWebhook"
-import { Product } from "../Models/Product"
 import { TGateway } from "../Types/TGateway"
+import { ICustomFieldObj } from "./ICustomField"
+import { IProduct } from "./IProduct"
 
 //
 export interface IOrder {
@@ -43,7 +44,7 @@ export interface IOrder {
     user_agent: string
     quantity: number
     coupon_id: string
-    custom_fields: Object
+    custom_fields: ICustomFieldObj
     developer_invoice: boolean
     developer_title: string
     developer_webhook: string
@@ -57,7 +58,7 @@ export interface IOrder {
     day: string
     month: string
     year: number
-    created_at: Date
+    created_at: string
     serials: string[]
     status_histroy: IStatusHistory[]
     paypal_dispute: IPayPalDispute
@@ -66,5 +67,5 @@ export interface IOrder {
     crypto_payout: boolean
     crypto_payout_transaction: ICryptoPayoutTransaction
     crypto_transactions: ICryptoTransaction[]
-    product: Product
+    product: IProduct
 }

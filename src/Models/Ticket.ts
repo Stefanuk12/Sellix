@@ -1,26 +1,26 @@
 // Dependencies
 import { Sellix } from ".."
-import { IQuery, IQueryCloseResponse, IQueryReplyResponse } from "../Interfaces/IQuery"
+import { ITicket, ITicketCloseResponse, ITicketReplyResponse } from "../Interfaces/ITicket"
 
 // Class
-export interface Query extends IQuery {}
-export class Query {
+export interface Ticket extends ITicket {}
+export class Ticket {
     // Constructor
-    constructor(Data: IQuery){
+    constructor(Data: ITicket){
         Object.assign(this, Data)
     }
 
-    // Retrieves a Query by Uniqid.
+    // Retrieves a Ticket by Uniqid.
     static async getByID(Uniqid: number){
         // Convert
         const response = JSON.parse((await Sellix.HttpClient.get(`queries/${Uniqid}`)).body)
-        const query = new Query(response)
+        const ticket = new Ticket(response)
 
         // Return
-        return query
+        return ticket
     }
 
-    // Returns a list of all the Queries. The queries are sorted by creation date, with the most recently created queries being first. The query object does not contain all the info
+    // Returns a list of all the Queries. The queries are sorted by creation date, with the most recently created queries being first. The ticket object does not contain all the info
     static async getAll(page?: number){
         // Get the queries
         const response = await Sellix.HttpClient.get("queries", {
@@ -28,17 +28,17 @@ export class Query {
         })
         const bodyResponse = JSON.parse(response.body)
 
-        // Convert each object to a query object
+        // Convert each object to a ticket object
         let queries = []
-        for (const _query of bodyResponse){
-            queries.push(new Query(_query))
+        for (const _ticket of bodyResponse){
+            queries.push(new Ticket(_ticket))
         }
 
         //
         return queries
     }
 
-    // Replies to a Query
+    // Replies to a Ticket
     async reply(reply: string){
         // Send request
         const response = await Sellix.HttpClient.post(`queries/reply/${this.uniqid}`, {
@@ -49,10 +49,10 @@ export class Query {
         const bodyResponse = JSON.parse(response.body)
 
         // Return
-        return <IQueryReplyResponse>bodyResponse
+        return <ITicketReplyResponse>bodyResponse
     }
 
-    // Closes to a Query
+    // Closes to a Ticket
     async close(){
         // Send request
         const response = await Sellix.HttpClient.post(`queries/close/${this.uniqid}`)
@@ -61,10 +61,10 @@ export class Query {
         const bodyResponse = JSON.parse(response.body)
 
         // Return
-        return <IQueryCloseResponse>bodyResponse
+        return <ITicketCloseResponse>bodyResponse
     }
 
-    // Reopen to a Query
+    // Reopen to a Ticket
     async reopen(){
         // Send request
         const response = await Sellix.HttpClient.post(`queries/reopen/${this.uniqid}`)
@@ -73,6 +73,6 @@ export class Query {
         const bodyResponse = JSON.parse(response.body)
 
         // Return
-        return <IQueryCloseResponse>bodyResponse
+        return <ITicketCloseResponse>bodyResponse
     }
 }

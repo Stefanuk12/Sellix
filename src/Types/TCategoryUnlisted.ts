@@ -1,0 +1,1 @@
+export type TCategoryUnlisted = 0 | 1

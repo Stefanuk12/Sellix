@@ -1,9 +1,7 @@
 // Dependencies
 import { StandardHttpResponse } from ".."
-import { Product } from "../Models/Product"
-
-// Types
-export type ICategoryUnlisted = 0 | 1
+import { TCategoryUnlisted } from "../Types/TCategoryUnlisted"
+import { IProduct } from "./IProduct"
 
 // Interfaces
 export interface ICategory {
@@ -11,12 +9,12 @@ export interface ICategory {
     uniqid: string
     shop_id: number
     title: string
-    unlisted: ICategoryUnlisted
+    unlisted: TCategoryUnlisted
     sort_priority: number
-    products_bound: Product[]
+    products_bound: IProduct[]
     product_count: number
-    created_at: Date
-    updated_at: Date
+    created_at: string
+    updated_at: string
     updated_by: number
 }
 

@@ -1,6 +1,6 @@
 // Dependencies
 import { Product, Sellix, StandardHttpResponse } from ".."
-import { ICoupon, ICouponCreate, ICouponCreateResponse, ICouponEdit, ICouponEditResponse, useType } from "../Interfaces/ICoupon"
+import { ICoupon, ICouponCreate, ICouponCreateResponse, ICouponEdit, ICouponEditResponse } from "../Interfaces/ICoupon"
 
 //
 export interface Coupon extends ICoupon {}

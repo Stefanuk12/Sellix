@@ -12,7 +12,7 @@ export { Feedback } from "./Models/Feedback"
 export { Order } from "./Models/Order"
 export { Payment } from "./Models/Payment"
 export { Product } from "./Models/Product"
-export { Query } from "./Models/Query"
+export { Ticket } from "./Models/Ticket"
 export { Subscription } from "./Models/Subscription"
 export { UserFeedback } from "./Models/UserFeedback"
 

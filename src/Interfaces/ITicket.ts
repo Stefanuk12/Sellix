@@ -1,23 +1,24 @@
 // Dependencies
 import { IMessage2 } from "./IMessage2"
 import { StandardHttpResponse } from ".."
+import { TTicketStatus } from "../Types/TTicketStatus"
 
 // Interfaces
-export interface IQuery {
+export interface ITicket {
     id: number
     uniqid: string
     customer_email: string
     shop_id: number
     title: string
-    status: string
+    status: TTicketStatus
     messages: IMessage2[]
     day_value: number
     month: string
     year: number
-    created_at: Date
-    updated_at: Date
+    created_at: string
+    updated_at: string
     updated_by: number
 }
 
-export interface IQueryReplyResponse extends StandardHttpResponse {}
-export interface IQueryCloseResponse extends StandardHttpResponse {}
+export interface ITicketReplyResponse extends StandardHttpResponse {}
+export interface ITicketCloseResponse extends StandardHttpResponse {}

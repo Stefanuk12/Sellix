@@ -1,0 +1,1 @@
+export type UseType = 0 | 1

@@ -2,8 +2,8 @@
 
 // Dependencies
 import { StandardHttpResponse } from ".."
-import { CustomField } from "../Models/CustomField"
 import { TGateway } from "../Types/TGateway"
+import { ICustomField } from "./ICustomField"
 
 // Interfaces
 export interface IPayment {
@@ -15,7 +15,7 @@ export interface IPayment {
     email: string
     return_url: string
     confirmations?: number
-    custom_fields?: CustomField[]
+    custom_fields?: ICustomField[]
     white_label?: boolean
 }
 
