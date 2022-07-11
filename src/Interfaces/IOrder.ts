@@ -11,6 +11,8 @@ import { IProduct } from "./IProduct"
 
 //
 export interface IOrder {
+    api_key: string
+
     id: number
     uniqid: string
     total: number

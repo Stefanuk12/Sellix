@@ -6,6 +6,8 @@ import { IProduct } from "./IProduct"
 
 // Interfaces
 export interface IFeedback {
+    api_key: string
+
     id: number
     uniqid: string
     invoice_id: number

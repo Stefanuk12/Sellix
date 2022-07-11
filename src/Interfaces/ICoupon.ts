@@ -5,6 +5,8 @@ import { IProduct } from "./IProduct"
 
 // Interfaces
 export interface ICoupon {
+    api_key: string
+
     id: number
     uniqid: string
     shop_id: number

@@ -1,82 +1,125 @@
 // Dependencies
-import { Sellix } from ".."
+import { Got } from "got"
+import { HttpClient } from ".."
 import { IBlacklist, IBlacklistCreate, IBlacklistCreateResponse, IBlacklistDeleteResponse, IBlacklistEdit, IBlacklistEditResponse } from "../Interfaces/IBlacklist"
 
 //
 export interface Blacklist extends IBlacklist {}
-export class Blacklist  {
+export class Blacklist {
+    // Vars
+    HttpClient: Got
+
     // Constructor
     constructor(Data: IBlacklist){
         Object.assign(this, Data)
+
+        this.HttpClient = HttpClient.extend({
+            headers: {
+                Authorization: `Bearer ${this.api_key}`
+            }
+        })
     }
 
     // Retrieves a Blacklist by ID
-    static async getByID(id: string){
+    static async getByID(api_key: string, id: string){
         // Convert
-        const response = JSON.parse((await Sellix.HttpClient.get(`blacklist/${id}`)).body)
+        const response: IBlacklist = await HttpClient.get(`blacklist/${id}`, {
+            headers: {
+                Authorization: `Bearer: ${api_key}`
+            }
+        }).json()
         const blacklist = new Blacklist(response)
 
         // Return
         return blacklist
     }
+    async getByID(id: string){
+        return await Blacklist.getByID(this.api_key, id)
+    }
 
     // Returns a list of the Blacklist. The blacklist are sorted by creation date, with the most recently created blacklist being first
-    static async getAll(page?: number){
+    static async getAll(api_key: string, page?: number){
         // Get the blacklists
-        const response = await Sellix.HttpClient.get("blacklist", {
-            form: {page: page}
-        })
-        const bodyResponse = JSON.parse(response.body)
+        const response: any = await HttpClient.get("blacklist", {
+            form: {page: page},
+            headers: {
+                Authorization: `Bearer: ${api_key}`
+            }
+        }).json()
 
         // Convert each object to a blacklist object
         let blacklists = []
-        for (const _blacklist of bodyResponse){
+        for (const _blacklist of response){
             blacklists.push(new Blacklist(_blacklist))
         }
 
         //
         return blacklists
     }
+    async getAll(page?: number){
+        return await Blacklist.getAll(this.api_key, page)
+    }
+
+    // Merged get
+    static async get(api_key: string, param?: string | number){
+        if (typeof param == "string")
+            return await Blacklist.getByID(api_key, param)
+        else
+            return await Blacklist.getAll(api_key, param)
+    }
+    async get(param: string | number){
+        return Blacklist.get(this.api_key, param)
+    }
 
     // Creates a Blacklist and returns the Uniqid
-    async create(Data: IBlacklistCreate){
-        const response = await Sellix.HttpClient.post("blacklist", {
-            form: Data
-        })
-
-        // Convert response
-        const bodyResponse = <IBlacklistCreateResponse>JSON.parse(response.body)
+    static async create(api_key: string, Data: IBlacklistCreate){
+        const response: IBlacklistCreateResponse = await HttpClient.post("blacklist", {
+            form: Data,
+            headers: {
+                Authorization: `Bearer: ${api_key}`
+            }
+        }).json()
 
         // Convert response to Blacklist Class
-        const blacklist = await Blacklist.getByID(bodyResponse.data.uniqid)
+        const blacklist = await Blacklist.getByID(api_key, response.data.uniqid)
 
         // Return
         return blacklist
     }
+    async create(Data: IBlacklistCreate){
+        return await Blacklist.create(this.api_key, Data)
+    }
 
     // Edits a Blacklist
-    async edit(Data: IBlacklistEdit){
+    static async edit(api_key: string, id: string, Data: IBlacklistEdit){
         // Send request
-        const response = await Sellix.HttpClient.put(`blacklists/${this.uniqid}`, {
-            form: Data
-        })
-
-        // Convert response
-        const bodyResponse = JSON.parse(response.body)
+        const response: IBlacklistEditResponse = await HttpClient.put(`blacklists/${id}`, {
+            form: Data,
+            headers: {
+                Authorization: `Bearer: ${api_key}`
+            }
+        }).json()
 
         // Return
-        return <IBlacklistEditResponse>bodyResponse
+        return response
+    }
+    async edit(Data: IBlacklistEdit){
+        return await Blacklist.edit(this.api_key, this.uniqid, Data)
     }
 
     // Deletes a Blacklist
-    async delete(){
+    static async delete(api_key: string, id: string){
         // Send request
-        const response = await Sellix.HttpClient.delete(`blacklists/${this.uniqid}`)
-        
-        // Convert response
-        const bodyResponse = JSON.parse(response.body)
+        const response: IBlacklistDeleteResponse = await HttpClient.delete(`blacklists/${id}`, {
+            headers: {
+                Authorization: `Bearer: ${api_key}`
+            }
+        }).json()
 
         // Return
-        return <IBlacklistDeleteResponse>bodyResponse
+        return response
+    }
+    async delete(){
+        return await Blacklist.delete(this.api_key, this.uniqid)
     }
 }

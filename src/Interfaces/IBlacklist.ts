@@ -4,6 +4,8 @@ import { TType } from "../Types/TType"
 
 // Interfaces
 export interface IBlacklist {
+    api_key: string
+
     id: number
     uniqid: string
     shop_id: string

@@ -7,6 +7,8 @@ import { ICustomField } from "./ICustomField"
 
 // Interfaces
 export interface IPayment {
+    api_key: string
+
     title: string
     product_id: string
     quantity: number

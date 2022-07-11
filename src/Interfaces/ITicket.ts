@@ -5,6 +5,8 @@ import { TTicketStatus } from "../Types/TTicketStatus"
 
 // Interfaces
 export interface ITicket {
+    api_key: string
+
     id: number
     uniqid: string
     customer_email: string

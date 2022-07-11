@@ -2,19 +2,20 @@
 import got, { Got } from "got"
 import * as crypto from 'crypto'
 import { NextFunction, Request, response, Response } from "express"
+import { Blacklist } from "./Models/Blacklist"
+import { Category } from "./Models/Category"
+import { Coupon } from "./Models/Coupon"
+import { CustomField } from "./Models/CustomField"
+import { Feedback } from "./Models/Feedback"
+import { Order } from "./Models/Order"
+import { Payment } from "./Models/Payment"
+import { Product } from "./Models/Product"
+import { Ticket } from "./Models/Ticket"
+import { Subscription } from "./Models/Subscription"
+import { UserFeedback } from "./Models/UserFeedback"
 
 // Exporting Models
-export { Blacklist } from "./Models/Blacklist"
-export { Category } from "./Models/Category"
-export { Coupon } from "./Models/Coupon"
-export { CustomField } from "./Models/CustomField"
-export { Feedback } from "./Models/Feedback"
-export { Order } from "./Models/Order"
-export { Payment } from "./Models/Payment"
-export { Product } from "./Models/Product"
-export { Ticket } from "./Models/Ticket"
-export { Subscription } from "./Models/Subscription"
-export { UserFeedback } from "./Models/UserFeedback"
+export { Blacklist, Category, Coupon, CustomField, Feedback, Order, Payment, Product, Ticket, Subscription, UserFeedback }
 
 //
 export interface StandardHttpResponse {
@@ -25,32 +26,30 @@ export interface StandardHttpResponse {
     "env": string
 }
 
-// Sellix Class
-export class Sellix {
-    // Vars
-    static apiKey: string
-    static webhookSecret: string
-    static apiBase: string = "https://dev.sellix.io/v1"
-    static HttpClient: Got
+//
+export const HttpClient = got.extend({
+    prefixUrl: "https://dev.sellix.io/v1/",
+    headers: {
+        "User-Agent": "sellix-tsjs"
+    }
+})
 
+// Sellix Class. Please make sure to re-set the `HttpClient` when changing `apiKey` as auth header will not be the same.
+export interface ISellix {
+    WebhookSecret: string
+}
+export interface Sellix extends ISellix {}
+export class Sellix {
     // Constructor
-    constructor(apiKey: string, webhookSecret: string){
-        Sellix.apiKey = apiKey
-        Sellix.webhookSecret = webhookSecret
-        Sellix.HttpClient = got.extend({
-            prefixUrl: Sellix.apiBase,
-            headers: {
-                'Authorization': `${Sellix.apiKey}`,
-                'User-Agent': `sellix-tsjs`
-            }
-        })
+    constructor(Data: ISellix){
+        Object.assign(this, Data)
     }
 
     // Verify is a webhook is legit
     verifyWebhook(GivenSignature: string, Payload: Object){
         // Generate Hmac
         const PayloadString = JSON.stringify(Payload)
-        const Signature = crypto.createHmac('sha512', Sellix.webhookSecret).update(PayloadString).digest('hex')
+        const Signature = crypto.createHmac('sha512', this.WebhookSecret).update(PayloadString).digest('hex')
 
         // Convert to buffers
         const GivenSignatureBuffer = Buffer.from(GivenSignature)

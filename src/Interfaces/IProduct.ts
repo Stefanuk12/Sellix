@@ -7,6 +7,8 @@ import { IUserFeedback } from "./IUserFeedback"
 
 // Interfaces
 export interface IProduct {
+    api_key: string
+
     id: number
     uniqid: string
     shop_id: number
