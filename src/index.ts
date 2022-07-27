@@ -56,7 +56,7 @@ export class Sellix {
         const SignatureBuffer = Buffer.from(Signature)
 
         // Make sure are same length
-        if (GivenSignatureBuffer.length != GivenSignature.length)
+        if (GivenSignatureBuffer.byteLength != SignatureBuffer.byteLength)
             return false
 
         // Return
