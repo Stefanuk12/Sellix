@@ -55,6 +55,10 @@ export class Sellix {
         const GivenSignatureBuffer = Buffer.from(GivenSignature)
         const SignatureBuffer = Buffer.from(Signature)
 
+        // Make sure are same length
+        if (GivenSignatureBuffer.length != GivenSignature.length)
+            return false
+
         // Return
         return crypto.timingSafeEqual(GivenSignatureBuffer, SignatureBuffer)
     }
