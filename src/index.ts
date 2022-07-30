@@ -1,7 +1,7 @@
 // Dependencies
-import got, { Got } from "got"
+import got from "got"
 import * as crypto from 'crypto'
-import { NextFunction, Request, response, Response } from "express"
+import { NextFunction, Request, Response } from "express"
 import { Blacklist } from "./Models/Blacklist"
 import { Category } from "./Models/Category"
 import { Coupon } from "./Models/Coupon"
@@ -68,12 +68,12 @@ export class Sellix {
         // Get the signature
         let GivenSignature = Request.headers["x-sellix-signature"]
         if (!GivenSignature){
-            return response.sendStatus(401)
+            return Response.sendStatus(401)
         }
-    
+
         // Make sure it matches
         if (!this.verifyWebhook(GivenSignature.toString(), Request.body)){
-            return response.sendStatus(401)
+            return Response.sendStatus(401)
         }
     
         //
