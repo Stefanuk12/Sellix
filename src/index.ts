@@ -64,7 +64,7 @@ export class Sellix {
     }
 
     // An express middleware to check if a webhook is legit
-    verifyWebhookExpress(Request: Request, Response: Response, Next: NextFunction){
+    verifyWebhookExpress = (Request: Request, Response: Response, Next: NextFunction) => {
         // Get the signature
         let GivenSignature = Request.headers["x-sellix-signature"]
         if (!GivenSignature){
