@@ -49,7 +49,7 @@ export class Sellix {
     verifyWebhook(GivenSignature: string, Payload: Object){
         // Generate Hmac
         const PayloadString = JSON.stringify(Payload)
-        const Signature = crypto.createHmac('sha512', this.WebhookSecret).update(PayloadString).digest('hex')
+        const Signature = crypto.createHmac('sha512', this.WebhookSecret).update(PayloadString, "utf-8").digest('hex')
 
         // Convert to buffers
         const GivenSignatureBuffer = Buffer.from(GivenSignature)
@@ -66,7 +66,7 @@ export class Sellix {
     // An express middleware to check if a webhook is legit
     verifyWebhookExpress = (Request: Request, Response: Response, Next: NextFunction) => {
         // Get the signature
-        let GivenSignature = Request.headers["x-sellix-signature"]
+        let GivenSignature = Request.headers["x-sellix-unescaped-signature"]
         if (!GivenSignature){
             return Response.sendStatus(401)
         }
