@@ -25,7 +25,7 @@ export class Order {
         // Convert
         const response: any = await HttpClient.get(`orders/${id}`, {
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
         const order = new Order(response)
@@ -54,13 +54,13 @@ export class Order {
         const response: any = await HttpClient.get("orders", {
             form: {page: page},
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
         // Convert each object to a order object
         let orders = []
-        for (const _order of response){
+        for (const _order of response.data.orders){
             orders.push(new Order(_order))
         }
         
