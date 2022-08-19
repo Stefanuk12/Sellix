@@ -42,7 +42,7 @@ export class Coupon {
     static async getAll(api_key: string, page?: number){
         // Get the coupons
         const response: SellixBase<ICouponListResponse> = await HttpClient.get("coupons", {
-            form: {page: page},
+            searchParams: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

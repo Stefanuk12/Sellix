@@ -42,7 +42,7 @@ export class Ticket {
     static async getAll(api_key: string, page?: number){
         // Get the queries
         const response: SellixBase<ITicketListResponse> = await HttpClient.get("queries", {
-            form: {page: page},
+            searchParams: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

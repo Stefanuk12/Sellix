@@ -53,7 +53,7 @@ export class Order {
     static async getAll(api_key: string, page?: number){
         // Get the orders
         const response: SellixBase<IOrderListResponse> = await HttpClient.get("orders", {
-            form: {page: page},
+            searchParams: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

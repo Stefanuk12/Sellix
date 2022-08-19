@@ -42,7 +42,7 @@ export class Blacklist {
     static async getAll(api_key: string, page?: number){
         // Get the blacklists
         const response: SellixBase<IBlacklistListResponse> = await HttpClient.get("blacklist", {
-            form: {page: page},
+            searchParams: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

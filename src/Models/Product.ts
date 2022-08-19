@@ -43,7 +43,7 @@ export class Product implements Record<string, any> {
     static async getAll(api_key: string, page?: number){
         // Get the products
         const response: SellixBase<IProductListResponse> = await HttpClient.get("products", {
-            form: {page: page},
+            searchParams: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

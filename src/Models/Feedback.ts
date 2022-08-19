@@ -42,7 +42,7 @@ export class Feedback {
     static async getAll(api_key: string, page?: number){
         // Get the feedback
         const response: SellixBase<IFeedbackListResponse> = await HttpClient.get("feedback", {
-            form: {page: page},
+            searchParams: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

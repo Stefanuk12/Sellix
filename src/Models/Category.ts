@@ -42,7 +42,7 @@ export class Category {
     static async getAll(api_key: string, page?: number){
         // Get the categories
         const response: SellixBase<ICategoryListResponse> = await HttpClient.get("categories", {
-            form: {page: page},
+            searchParams: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }
