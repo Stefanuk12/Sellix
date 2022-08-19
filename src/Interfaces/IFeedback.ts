@@ -1,8 +1,7 @@
 // Dependencies
-import { StandardHttpResponse } from ".."
-import { TFeedbackScore } from "../Types/TFeedbackScore"
-import { IInvoice } from "./IInvoice"
-import { IProduct } from "./IProduct"
+import { TFeedbackScore } from "../Types/TFeedbackScore.js"
+import { IInvoice } from "./IInvoice.js"
+import { IProduct } from "./IProduct.js"
 
 // Interfaces
 export interface IFeedback {
@@ -26,6 +25,10 @@ export interface IFeedback {
     updated_by: number
 }
 
-export interface IFeedbackReplyResponse extends StandardHttpResponse {
-    data: null
+export interface IFeedbackGetResponse {
+    feedback: IFeedback
+}
+
+export interface IFeedbackListResponse {
+    feedback: IFeedback[]
 }

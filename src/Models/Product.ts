@@ -1,8 +1,9 @@
 // Dependencies
 import { Got } from "got"
-import { HttpClient } from ".."
-import { IProduct, IProductCreateEdit, IProductCreateResponse, IProductDeleteResponse, IProductEditResponse } from "../Interfaces/IProduct"
-import { Indexer } from "../Types/TIndexer"
+import { HttpClient } from "../index.js"
+import { IProduct, IProductCreateEdit, IProductGetResponse, IProductListResponse } from "../Interfaces/IProduct.js"
+import { SellixBase, SellixBaseString, SellixBaseUniqid } from "../Interfaces/SellixBase.js"
+import { Indexer } from "../Types/TIndexer.js"
 
 //
 export interface Product extends IProduct {}
@@ -25,12 +26,12 @@ export class Product {
     // Retrieves a Product by ID
     static async getByID(api_key: string, id: string){
         // Convert
-        const response: any = await HttpClient.get(`products/${id}`, {
+        const response: SellixBase<IProductGetResponse> = await HttpClient.get(`products/${id}`, {
             headers: {
                 Authorization: `Bearer ${api_key}`
             }
         }).json()
-        const product = new Product(response)
+        const product = new Product(response.data.product)
 
         // Return
         return product
@@ -42,7 +43,7 @@ export class Product {
     // Returns a list of all the Products. The products are sorted by creation date, with the most recently created products being first. This endpoint will return less info than the Get Product one
     static async getAll(api_key: string, page?: number){
         // Get the products
-        const response: any = await HttpClient.get("products", {
+        const response: SellixBase<IProductListResponse> = await HttpClient.get("products", {
             form: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
@@ -51,7 +52,7 @@ export class Product {
 
         // Convert each object to a product object
         let products = []
-        for (const _product of response){
+        for (const _product of response.data.products){
             products.push(new Product(_product))
         }
 
@@ -76,10 +77,10 @@ export class Product {
     // Creates a Product and returns the Uniqid
     static async create(api_key: string, Data: IProductCreateEdit){
         // Send response
-        const response: IProductCreateResponse = await HttpClient.post("products", {
+        const response: SellixBaseUniqid = await HttpClient.post("products", {
             form: Data,
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
@@ -96,10 +97,10 @@ export class Product {
     // Edits a Product. Arguments are the same as the create product endpoint, with the addition of remove_image and remove_file
     static async edit(api_key: string, id: string, Data: IProductCreateEdit){
         // Send response
-        const response: IProductEditResponse = await HttpClient.put(`products/${id}`, {
+        const response: SellixBaseString = await HttpClient.put(`products/${id}`, {
             form: Data,
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
@@ -119,9 +120,9 @@ export class Product {
     // Deletes a Product
     static async delete(api_key: string, id: string){
         // Send response
-        const response: IProductDeleteResponse = await HttpClient.delete(`products/${id}`, {
+        const response: SellixBaseString = await HttpClient.delete(`products/${id}`, {
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 

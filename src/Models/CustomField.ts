@@ -1,5 +1,5 @@
 // Dependencies
-import { ICustomField } from "../Interfaces/ICustomField"
+import { ICustomField } from "../Interfaces/ICustomField.js"
 
 //
 export interface CustomField extends ICustomField {}

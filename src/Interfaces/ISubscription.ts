@@ -1,10 +1,10 @@
 // MIGHT BE INCOMPLETE, DOCS DONT PROVIDE ENOUGH DETAIL
 
 // Dependencies
-import { TGateway } from "../Types/TGateway"
-import { TSubscriptionStatus } from "../Types/TSubscriptionStatus"
-import { ICustomFieldObj } from "./ICustomField"
-import { IInvoice } from "./IInvoice"
+import { TGateway } from "../Types/TGateway.js"
+import { TSubscriptionStatus } from "../Types/TSubscriptionStatus.js"
+import { ICustomFieldObj } from "./ICustomField.js"
+import { IInvoice } from "./IInvoice.js"
 
 // Interfaces
 export interface ISubscription {

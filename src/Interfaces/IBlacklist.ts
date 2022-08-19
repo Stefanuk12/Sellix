@@ -1,6 +1,5 @@
 // Dependencies
-import { StandardHttpResponse } from ".."
-import { TType } from "../Types/TType"
+import { TType } from "../Types/TType.js"
 
 // Interfaces
 export interface IBlacklist {
@@ -17,17 +16,14 @@ export interface IBlacklist {
     updated_by: number
 }
 
+export interface IBlacklistListResponse {
+    blacklists: IBlacklist[]
+}
+
 export interface IBlacklistCreate {
     type: TType
     data: string
     note?: string
-}
-
-export interface IBlacklistCreateResponseData {
-    uniqid: string
-}
-export interface IBlacklistCreateResponse extends StandardHttpResponse {
-    data: IBlacklistCreateResponseData
 }
 
 export interface IBlacklistEdit {
@@ -35,18 +31,4 @@ export interface IBlacklistEdit {
     type: TType
     data: string
     note: string
-}
-
-export interface IBlacklistEditResponseData {
-    uniqid: string
-}
-export interface IBlacklistEditResponse extends StandardHttpResponse {
-    data: IBlacklistEditResponseData
-}
-
-export interface IBlacklistDeleteData {
-    uniqid: string
-}
-export interface IBlacklistDeleteResponse extends StandardHttpResponse {
-    data: IBlacklistDeleteData
 }

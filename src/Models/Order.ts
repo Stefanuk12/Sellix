@@ -1,7 +1,8 @@
 // Dependencies
 import { Got } from "got"
-import { HttpClient } from ".."
-import { IOrder } from "../Interfaces/IOrder"
+import { HttpClient } from "../index.js"
+import { IOrder, IOrderGetResponse, IOrderListResponse } from "../Interfaces/IOrder.js"
+import { SellixBase } from "../Interfaces/SellixBase.js"
 
 //
 export interface Order extends IOrder {}
@@ -23,12 +24,12 @@ export class Order {
     // Retrieves an Order by Uniqid.
     static async getByID(api_key: string, id: string){
         // Convert
-        const response: any = await HttpClient.get(`orders/${id}`, {
+        const response: SellixBase<IOrderGetResponse> = await HttpClient.get(`orders/${id}`, {
             headers: {
                 Authorization: `Bearer ${api_key}`
             }
         }).json()
-        const order = new Order(response)
+        const order = new Order(response.data.order)
 
         //
         return order
@@ -51,7 +52,7 @@ export class Order {
     // Returns a list of all the Order. The order are sorted by creation date, with the most recently created order being first. Product objects and additional info are not shown in the list endpoint.
     static async getAll(api_key: string, page?: number){
         // Get the orders
-        const response: any = await HttpClient.get("orders", {
+        const response: SellixBase<IOrderListResponse> = await HttpClient.get("orders", {
             form: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`

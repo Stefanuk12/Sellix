@@ -1,5 +1,5 @@
 // Dependencies
-import { TOrderStatus } from "./TOrderStatus";
+import { TOrderStatus } from "./TOrderStatus.js";
 
 //
 export type TOrderHistoryStatus = TOrderStatus & "PAYMENT_CAPTURE COMPLETED" |

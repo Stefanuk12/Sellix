@@ -1,7 +1,8 @@
 // Dependencies
 import { Got } from "got"
-import { HttpClient } from ".."
-import { ICategory, ICategoryCreate, ICategoryCreateResponse, ICategoryDeleteResponse, ICategoryEdit, ICategoryEditResponse } from "../Interfaces/ICategory"
+import { HttpClient } from "../index.js"
+import { ICategory, ICategoryCreate, ICategoryCreateResponse, ICategoryEdit, ICategoryGetResponse, ICategoryListResponse } from "../Interfaces/ICategory.js"
+import { SellixBase, SellixBaseString } from "../Interfaces/SellixBase.js"
 
 //
 export interface Category extends ICategory {}
@@ -23,12 +24,12 @@ export class Category {
     // Retrieves a Category by Uniqid
     static async getByID(api_key: string, id: string){
         // Convert
-        const response: any = await HttpClient.get(`categories/${id}`, {
+        const response: SellixBase<ICategoryGetResponse> = await HttpClient.get(`categories/${id}`, {
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
-        const category = new Category(response)
+        const category = new Category(response.data.category)
 
         // Return
         return category
@@ -40,16 +41,16 @@ export class Category {
     // Returns a list of all the Categories. The categories are sorted by creation date, with the most recently created categories being first
     static async getAll(api_key: string, page?: number){
         // Get the categories
-        const response: any = await HttpClient.get("categories", {
+        const response: SellixBase<ICategoryListResponse> = await HttpClient.get("categories", {
             form: {page: page},
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
         // Convert each object to a category object
         let categories = []
-        for (const _category of response){
+        for (const _category of response.data.categories){
             categories.push(new Category(_category))
         }
 
@@ -77,7 +78,7 @@ export class Category {
         const response: ICategoryCreateResponse = await HttpClient.post("categories", {
             form: Data,
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
@@ -94,10 +95,10 @@ export class Category {
     // Edits a Category
     static async edit(api_key: string, id: string, Data: ICategoryEdit){
         // Send request
-        const response: ICategoryEditResponse = await HttpClient.put(`categories/${id}`, {
+        const response: SellixBaseString = await HttpClient.put(`categories/${id}`, {
             form: Data,
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
@@ -111,9 +112,9 @@ export class Category {
     // Deletes a Category
     static async delete(api_key: string, id: string){
         // Send request
-        const response: ICategoryDeleteResponse = await HttpClient.delete(`categories/${id}`, {
+        const response: SellixBaseString = await HttpClient.delete(`categories/${id}`, {
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 

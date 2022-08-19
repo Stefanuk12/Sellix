@@ -1,9 +1,8 @@
 // Dependencies
-import { StandardHttpResponse } from ".."
-import { TCurrency } from "../Types/TCurrency"
-import { TGateway } from "../Types/TGateway"
-import { ICustomField } from "./ICustomField"
-import { IUserFeedback } from "./IUserFeedback"
+import { TCurrency } from "../Types/TCurrency.js"
+import { TGateway } from "../Types/TGateway.js"
+import { ICustomField } from "./ICustomField.js"
+import { IUserFeedback } from "./IUserFeedback.js"
 
 // Interfaces
 export interface IProduct {
@@ -53,15 +52,12 @@ export interface IProduct {
     feedback: IUserFeedback[]
 }
 
-export interface IProductCreateResponseData {
-    uniqid: string
+export interface IProductGetResponse {
+    product: IProduct
 }
-export interface IProductCreateResponse extends StandardHttpResponse {
-    data: IProductCreateResponseData
-}
-export interface IProductEditResponse extends StandardHttpResponse {}
-export interface IProductDeleteResponse extends StandardHttpResponse {
-    data: null
+
+export interface IProductListResponse {
+    products: IProduct[]
 }
 
 export interface IQuantity {

@@ -2,29 +2,20 @@
 import got from "got"
 import * as crypto from 'crypto'
 import { NextFunction, Request, Response } from "express"
-import { Blacklist } from "./Models/Blacklist"
-import { Category } from "./Models/Category"
-import { Coupon } from "./Models/Coupon"
-import { CustomField } from "./Models/CustomField"
-import { Feedback } from "./Models/Feedback"
-import { Order } from "./Models/Order"
-import { Payment } from "./Models/Payment"
-import { Product } from "./Models/Product"
-import { Ticket } from "./Models/Ticket"
-import { Subscription } from "./Models/Subscription"
-import { UserFeedback } from "./Models/UserFeedback"
+import { Blacklist } from "./Models/Blacklist.js"
+import { Category } from "./Models/Category.js"
+import { Coupon } from "./Models/Coupon.js"
+import { CustomField } from "./Models/CustomField.js"
+import { Feedback } from "./Models/Feedback.js"
+import { Order } from "./Models/Order.js"
+import { Payment } from "./Models/Payment.js"
+import { Product } from "./Models/Product.js"
+import { Ticket } from "./Models/Ticket.js"
+import { Subscription } from "./Models/Subscription.js"
+import { UserFeedback } from "./Models/UserFeedback.js"
 
 // Exporting Models
 export { Blacklist, Category, Coupon, CustomField, Feedback, Order, Payment, Product, Ticket, Subscription, UserFeedback }
-
-//
-export interface StandardHttpResponse {
-    "status": number
-    "message": string
-    "log": string
-    "error": string
-    "env": string
-}
 
 //
 export const HttpClient = got.extend({

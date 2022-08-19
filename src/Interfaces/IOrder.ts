@@ -1,13 +1,13 @@
 // Dependencies
-import { ICryptoPayoutTransaction } from "../Interfaces/ICryptoPayoutTransaction"
-import { ICryptoTransaction } from "../Interfaces/ICryptoTransaction"
-import { IFile } from "../Interfaces/IFile"
-import { IPayPalDispute } from "../Interfaces/IPayPalDispute"
-import { IStatusHistory } from "../Interfaces/IStatusHistory"
-import { IWebhook } from "../Interfaces/IWebhook"
-import { TGateway } from "../Types/TGateway"
-import { ICustomFieldObj } from "./ICustomField"
-import { IProduct } from "./IProduct"
+import { ICryptoPayoutTransaction } from "../Interfaces/ICryptoPayoutTransaction.js"
+import { ICryptoTransaction } from "../Interfaces/ICryptoTransaction.js"
+import { IFile } from "../Interfaces/IFile.js"
+import { IPayPalDispute } from "../Interfaces/IPayPalDispute.js"
+import { IStatusHistory } from "../Interfaces/IStatusHistory.js"
+import { IWebhook } from "../Interfaces/IWebhook.js"
+import { TGateway } from "../Types/TGateway.js"
+import { ICustomFieldObj } from "./ICustomField.js"
+import { IProduct } from "./IProduct.js"
 
 //
 export interface IOrder {
@@ -70,4 +70,12 @@ export interface IOrder {
     crypto_payout_transaction: ICryptoPayoutTransaction
     crypto_transactions: ICryptoTransaction[]
     product: IProduct
+}
+
+export interface IOrderGetResponse {
+    order: IOrder
+}
+
+export interface IOrderListResponse {
+    orders: IOrder[]
 }

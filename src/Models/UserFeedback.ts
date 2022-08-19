@@ -1,5 +1,5 @@
 // Dependencies
-import { IUserFeedback } from "../Interfaces/IUserFeedback"
+import { IUserFeedback } from "../Interfaces/IUserFeedback.js"
 
 //
 export interface UserFeedback extends IUserFeedback {}

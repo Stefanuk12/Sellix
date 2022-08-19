@@ -1,7 +1,6 @@
 // Dependencies
-import { StandardHttpResponse } from ".."
-import { UseType } from "../Types/TUseType"
-import { IProduct } from "./IProduct"
+import { UseType } from "../Types/TUseType.js"
+import { IProduct } from "./IProduct.js"
 
 // Interfaces
 export interface ICoupon {
@@ -22,18 +21,19 @@ export interface ICoupon {
     updated_by: number
 }
 
+export interface ICouponGetResponse {
+    coupon: ICoupon
+}
+
+export interface ICouponListResponse {
+    coupons: ICoupon[]
+}
+
 export interface ICouponCreate {
     code: string
     discount_value: number
     max_uses?: number
     products_bound?: string[]
-}
-
-export interface ICouponCreateResponseData {
-    uniqid: string
-}
-export interface ICouponCreateResponse extends StandardHttpResponse {
-    data: ICouponCreateResponseData
 }
 
 export interface ICouponEdit {
@@ -42,11 +42,4 @@ export interface ICouponEdit {
     discount_value: number
     max_uses: number
     products_bound: string[]
-}
-
-export interface ICouponEditResponseData {
-    uniqid: string
-}
-export interface ICouponEditResponse extends StandardHttpResponse {
-    data: ICouponEditResponseData
 }

@@ -1,9 +1,9 @@
 // I DONT KNOW HOW TO TYPE THIS PROPERLY :(
 
 // Dependencies
-import { StandardHttpResponse } from ".."
-import { TGateway } from "../Types/TGateway"
-import { ICustomField } from "./ICustomField"
+import { TGateway } from "../Types/TGateway.js"
+import { ICustomField } from "./ICustomField.js"
+import { IInvoice } from "./IInvoice.js"
 
 // Interfaces
 export interface IPayment {
@@ -21,9 +21,11 @@ export interface IPayment {
     white_label?: boolean
 }
 
-export interface IPaymentCreateResponseData {
+export interface IPaymentCreateResponseDataWhiteLabel {
+    uniqid: string
     url: string
 }
-export interface IPaymentCreateResponse extends StandardHttpResponse {
-    data: IPaymentCreateResponseData
+
+export interface IPaymentCreateResponseData {
+   invoice: IInvoice
 }

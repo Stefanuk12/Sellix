@@ -1,5 +1,5 @@
 // Dependencies
-import { IMessage } from "./IMessage"
+import { IMessage } from "./IMessage.js"
 
 //
 export interface IPayPalDispute {

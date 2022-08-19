@@ -1,7 +1,6 @@
 // Dependencies
-import { IMessage2 } from "./IMessage2"
-import { StandardHttpResponse } from ".."
-import { TTicketStatus } from "../Types/TTicketStatus"
+import { IMessage2 } from "./IMessage2.js"
+import { TTicketStatus } from "../Types/TTicketStatus.js"
 
 // Interfaces
 export interface ITicket {
@@ -22,5 +21,10 @@ export interface ITicket {
     updated_by: number
 }
 
-export interface ITicketReplyResponse extends StandardHttpResponse {}
-export interface ITicketCloseResponse extends StandardHttpResponse {}
+export interface ITicketGetResponse {
+    query: ITicket
+}
+
+export interface ITicketListResponse {
+    queries: ITicket[]
+}

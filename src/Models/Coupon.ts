@@ -1,7 +1,8 @@
 // Dependencies
 import { Got } from "got"
-import { HttpClient, Product, StandardHttpResponse } from ".."
-import { ICoupon, ICouponCreate, ICouponCreateResponse, ICouponEdit, ICouponEditResponse } from "../Interfaces/ICoupon"
+import { HttpClient } from "../index.js"
+import { ICoupon, ICouponCreate, ICouponEdit, ICouponGetResponse, ICouponListResponse } from "../Interfaces/ICoupon.js"
+import { SellixBase, SellixBaseString, SellixBaseUniqid } from "../Interfaces/SellixBase.js"
 
 //
 export interface Coupon extends ICoupon {}
@@ -23,12 +24,12 @@ export class Coupon {
     // Retrieves a Coupon by Uniqid.
     static async getByID(api_key: string, id: string){
         // Convert
-        const response: any = await HttpClient.get(`coupons/${id}`, {
+        const response: SellixBase<ICouponGetResponse> = await HttpClient.get(`coupons/${id}`, {
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
-        const coupon = new Coupon(response)
+        const coupon = new Coupon(response.data.coupon)
 
         //
         return coupon
@@ -40,16 +41,16 @@ export class Coupon {
     // Returns a list of all the Coupons. The coupons are sorted by creation date, with the most recently created coupons being first
     static async getAll(api_key: string, page?: number){
         // Get the coupons
-        const response: any = await HttpClient.get("coupons", {
+        const response: SellixBase<ICouponListResponse> = await HttpClient.get("coupons", {
             form: {page: page},
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
         // Convert each object to a coupons object
         let coupons = []
-        for (const _coupon of response){
+        for (const _coupon of response.data.coupons){
             coupons.push(new Coupon(_coupon))
         }
 
@@ -74,10 +75,10 @@ export class Coupon {
     // Creates a Coupon and returns the Uniqid
     static async create(api_key: string, Data: ICouponCreate){
         // Send request
-        const response: ICouponCreateResponse = await HttpClient.post("coupons", {
+        const response: SellixBaseUniqid = await HttpClient.post("coupons", {
             form: Data,
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
@@ -95,10 +96,10 @@ export class Coupon {
     // Edits a Category
     static async edit(api_key: string, id: string, Data: ICouponEdit){
         // Send request
-        const response: ICouponEditResponse = await HttpClient.put(`coupons/${id}`, {
+        const response: SellixBaseString = await HttpClient.put(`coupons/${id}`, {
             form: Data,
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 
@@ -112,9 +113,9 @@ export class Coupon {
     // Deletes a Category
     static async delete(api_key: string, id: string){
         // Send request
-        const response: StandardHttpResponse = await HttpClient.delete(`coupons/${id}`, {
+        const response: SellixBaseString = await HttpClient.delete(`coupons/${id}`, {
             headers: {
-                Authorization: `Bearer: ${api_key}`
+                Authorization: `Bearer ${api_key}`
             }
         }).json()
 

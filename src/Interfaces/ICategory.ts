@@ -1,7 +1,6 @@
 // Dependencies
-import { StandardHttpResponse } from ".."
-import { TCategoryUnlisted } from "../Types/TCategoryUnlisted"
-import { IProduct } from "./IProduct"
+import { TCategoryUnlisted } from "../Types/TCategoryUnlisted.js"
+import { IProduct } from "./IProduct.js"
 
 // Interfaces
 export interface ICategory {
@@ -18,6 +17,14 @@ export interface ICategory {
     created_at: string
     updated_at: string
     updated_by: number
+}
+
+export interface ICategoryGetResponse {
+    category: ICategory
+}
+
+export interface ICategoryListResponse {
+    categories: ICategory[]
 }
 
 export interface ICategoryCreate {
@@ -40,15 +47,4 @@ export interface ICategoryEdit {
     unlisted: boolean
     sort_priority: string
     products_bound: string[]
-}
-
-export interface ICategoryEditResponseData {
-    uniqid: string
-}
-export interface ICategoryEditResponse {
-    data: ICategoryEditResponseData
-}
-
-export interface ICategoryDeleteResponse extends StandardHttpResponse {
-    data: null
 }

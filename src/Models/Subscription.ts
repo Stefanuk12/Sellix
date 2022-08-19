@@ -1,5 +1,5 @@
 // Dependencies
-import { ISubscription } from "../Interfaces/ISubscription"
+import { ISubscription } from "../Interfaces/ISubscription.js"
 
 //
 export interface Subscription extends ISubscription {}
