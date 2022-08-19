@@ -41,7 +41,7 @@ export class Blacklist {
     // Returns a list of the Blacklist. The blacklist are sorted by creation date, with the most recently created blacklist being first
     static async getAll(api_key: string, page?: number){
         // Get the blacklists
-        const response: SellixBase<IBlacklistListResponse> = await HttpClient.get("blacklist", {
+        const response: SellixBase<IBlacklistListResponse> = await HttpClient.get("blacklists", {
             searchParams: {page: page},
             headers: {
                 Authorization: `Bearer ${api_key}`
@@ -74,7 +74,7 @@ export class Blacklist {
 
     // Creates a Blacklist and returns the Uniqid
     static async create(api_key: string, Data: IBlacklistCreate){
-        const response: SellixBaseUniqid = await HttpClient.post("blacklist", {
+        const response: SellixBaseUniqid = await HttpClient.post("blacklists", {
             json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
