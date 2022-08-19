@@ -1,1 +1,0 @@
-export type Indexer<T> = { [ key: string ]: T }

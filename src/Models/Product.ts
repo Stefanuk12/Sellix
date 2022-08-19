@@ -3,14 +3,13 @@ import { Got } from "got"
 import { HttpClient } from "../index.js"
 import { IProduct, IProductCreateEdit, IProductGetResponse, IProductListResponse } from "../Interfaces/IProduct.js"
 import { SellixBase, SellixBaseString, SellixBaseUniqid } from "../Interfaces/SellixBase.js"
-import { Indexer } from "../Types/TIndexer.js"
 
 //
 export interface Product extends IProduct {}
-export class Product {
+export class Product implements Record<string, any> {
     // Vars
+    [key: string]: any
     HttpClient: Got
-    indexer = this as unknown as Indexer<this>
 
     // Constructor
     constructor(Data: IProduct){
@@ -110,7 +109,7 @@ export class Product {
     async edit(Data: IProductCreateEdit){
         // Edit this
         for (const [index, value] of Object.entries(Data)){
-            this.indexer[index] = value
+            this[index] = value
         }
     
         // Return
