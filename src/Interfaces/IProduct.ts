@@ -1,6 +1,9 @@
 // Dependencies
 import { TCurrency } from "../Types/TCurrency.js"
 import { TGateway } from "../Types/TGateway.js"
+import { TIntervals } from "../Types/TIntervals.js"
+import { TProductSubType } from "../Types/TProductSubType.js"
+import { TProductType } from "../Types/TProductType.js"
 import { ICustomField } from "./ICustomField.js"
 import { IUserFeedback } from "./IUserFeedback.js"
 
@@ -11,45 +14,52 @@ export interface IProduct {
     id: number
     uniqid: string
     shop_id: number
-    name: string
+    type: TProductType
+    subtype: TProductSubType
+    title: string
+    currency: TCurrency
     price: number
     price_display: number
-    currency: TCurrency
-    title: string
-    image_name: string
-    image_storage: string
+    description: string
     image_attachment: string
     file_attachment: string
-    description: string
+    volume_discounts: Object[]
+    recurring_interval: TIntervals
+    recurring_interval_count: number
+    trial_period: number
+    paypal_product_id: string
+    paypal_plan_id: string
+    stripe_price_id: string
     quantity_min: number
     quantity_max: number
     quantity_warning: number
-    delivery_text: string
-    service_text: string
     custom_fields: ICustomField[]
-    type: string
-    gateways: TGateway[]
     crypto_confirmations_needed: number
     max_risk_level: number
     block_vpn_proxies: boolean
-    private: boolean
-    stock: number
+    delivery_text: string
+    service_text: string
     stock_delimiter: string
-    serials: string[]
-    serials_remove_duplicates: boolean
+    stock: number
     dymanic_webhook: string
-    unlisted: boolean
     sort_priority: number
-    terms_of_service: string
-    warranty: number
-    warranty_text: string
-    created_at: string
-    updated_at: string
-    updated_by: number
-    file_attachment_info: Object
-    image_attachment_info: Object
+    unlisted: boolean
+    gateways: TGateway[]
+    private: boolean
+    name: string
+    image_name: string
+    image_storage: string
+    cloudflare_image_id: string
+    serials: string[]
     webhooks: string[]
     feedback: IUserFeedback[]
+    theme: "dark" | "light"
+    dark_mode: 1 | 0
+    average_score: number
+    lex_payment_methods: string[]
+    created_at: number
+    updated_at: number
+    updated_by: number
 }
 
 export interface IProductGetResponse {
@@ -60,35 +70,10 @@ export interface IProductListResponse {
     products: IProduct[]
 }
 
-export interface IQuantity {
-    min: number
-    max: number
-}
 
-export interface IProductCreateEdit {
+export interface IProductCreateEdit extends Partial<IProduct> {
     title: string
-    description: string
     price: number
-    gateways: TGateway[]
-    type: string
-    discount_value: string
-    currency: TCurrency
-    quantity: IQuantity
-    stock_delimiter: string
-    serials: string[]
-    serials_remove_duplicates: boolean
-    delivery_text: string
-    service_text: string
-    stock: number
-    custom_fields: ICustomField[]
-    crypto_confirmations_needed: number
-    max_risk_level: number
-    block_vpn_proxies: boolean
-    sort_priority: boolean
-    unlisted: boolean
-    terms_of_service: string
-    warranty: number
-    warranty_text: string
-    private: boolean
-    webhooks: string[]
+    description: string
+    type: TProductType
 }

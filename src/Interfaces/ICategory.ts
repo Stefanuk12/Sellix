@@ -1,5 +1,5 @@
 // Dependencies
-import { TCategoryUnlisted } from "../Types/TCategoryUnlisted.js"
+import { IGroup } from "./IGroup.js"
 import { IProduct } from "./IProduct.js"
 
 // Interfaces
@@ -10,12 +10,14 @@ export interface ICategory {
     uniqid: string
     shop_id: number
     title: string
-    unlisted: TCategoryUnlisted
+    unlisted: boolean
     sort_priority: number
     products_bound: IProduct[]
     product_count: number
-    created_at: string
-    updated_at: string
+    groups_bound: IGroup[]
+    groups_count: number
+    created_at: number
+    updated_at: number
     updated_by: number
 }
 
@@ -27,11 +29,8 @@ export interface ICategoryListResponse {
     categories: ICategory[]
 }
 
-export interface ICategoryCreate {
+export interface ICategoryCreate extends Partial<ICategory> {
     title: string
-    unlisted?: boolean
-    sort_priority?: string
-    products_bound?: string[]
 }
 
 export interface ICategoryCreateResponseData {
@@ -41,10 +40,4 @@ export interface ICategoryCreateResponse {
     data: ICategoryCreateResponseData
 }
 
-export interface ICategoryEdit {
-    uniqid: number
-    title: string
-    unlisted: boolean
-    sort_priority: string
-    products_bound: string[]
-}
+export interface ICategoryEdit extends ICategoryCreate {}

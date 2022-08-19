@@ -9,19 +9,22 @@ export interface IFeedback {
 
     id: number
     uniqid: string
-    invoice_id: number
     product_id: string
+    invoice_id: number
+    blocked: boolean
+    appealed: boolean
     shop_id: number
     message: string
     reply: string
-    feedback: string
     score: TFeedbackScore
+    product_title: string
+    product_image_name: string
+    product_image_storage: string
+    cloudflare_image_id: string
     invoice: IInvoice
     product: IProduct
-    products_bound: IProduct[]
-    product_count: number
-    created_at: string
-    updated_at: string
+    created_at: number
+    updated_at: number
     updated_by: number
 }
 

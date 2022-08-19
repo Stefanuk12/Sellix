@@ -1,4 +1,5 @@
 // Dependencies
+import { TBlacklistScope } from "../Types/TBlacklistScope.js"
 import { TType } from "../Types/TType.js"
 
 // Interfaces
@@ -7,12 +8,13 @@ export interface IBlacklist {
 
     id: number
     uniqid: string
+    scope: TBlacklistScope
     shop_id: string
     type: TType
     data: string
     note: string
     created_at: string
-    updated_at: string
+    updated_at: number
     updated_by: number
 }
 

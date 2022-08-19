@@ -8,16 +8,17 @@ export interface ITicket {
 
     id: number
     uniqid: string
-    customer_email: string
     shop_id: number
+    invoice_id: number
+    customer_email: string
     title: string
     status: TTicketStatus
     messages: IMessage2[]
     day_value: number
     month: string
     year: number
-    created_at: string
-    updated_at: string
+    created_at: number
+    updated_at: number
     updated_by: number
 }
 

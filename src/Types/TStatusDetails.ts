@@ -1,0 +1,1 @@
+export type TStatusDetails = "CART_PARTIAL_OUT_OF_STOCK"

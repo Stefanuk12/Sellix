@@ -1,7 +1,11 @@
+// Dependencies
+import { TOrderHistoryStatus } from "../Types/TOrderHistoryStatus.js"
+
+//
 export interface IStatusHistory {
-    created_at: string
-    details: string
     id: string
     invoice_id: string
-    status: string
+    status: TOrderHistoryStatus
+    details: string
+    created_at: string
 }

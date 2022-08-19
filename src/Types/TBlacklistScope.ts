@@ -1,0 +1,1 @@
+export type TBlacklistScope = "PRIVATE" | "SHARED"

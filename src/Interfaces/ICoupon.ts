@@ -1,6 +1,7 @@
 // Dependencies
+import { TCouponType } from "../Types/TCouponType.js"
+import { TCurrency } from "../Types/TCurrency.js"
 import { UseType } from "../Types/TUseType.js"
-import { IProduct } from "./IProduct.js"
 
 // Interfaces
 export interface ICoupon {
@@ -9,15 +10,19 @@ export interface ICoupon {
     id: number
     uniqid: string
     shop_id: number
+    type: TCouponType
     code: string
     use_type: UseType
     discount: number
+    currency: TCurrency
     used: number
+    disabled_with_volume_discounts: boolean
+    all_recurring_bill_invoices: boolean
     max_uses: number
-    products_bound: IProduct[]
+    products_bound: string[]
     product_count: number
-    created_at: string
-    updated_at: string
+    created_at: number
+    updated_at: number
     updated_by: number
 }
 
@@ -29,17 +34,9 @@ export interface ICouponListResponse {
     coupons: ICoupon[]
 }
 
-export interface ICouponCreate {
+export interface ICouponCreate extends Partial<ICoupon> {
     code: string
     discount_value: number
-    max_uses?: number
-    products_bound?: string[]
 }
 
-export interface ICouponEdit {
-    uniqid: number
-    code: string
-    discount_value: number
-    max_uses: number
-    products_bound: string[]
-}
+export type ICouponEdit = ICouponCreate
