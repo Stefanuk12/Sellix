@@ -26,7 +26,7 @@ export class Payment {
     async create(){
         // Send request
         const response: SellixBase<IPaymentCreateResponseDataWhiteLabel> | SellixBase<IPaymentCreateResponseData> = await this.HttpClient.post("payments", {
-            form: this
+            json: this
         }).json()
 
         //
@@ -37,7 +37,7 @@ export class Payment {
     static async delete(api_key: string, id: string){
         // Send request
         const response: SellixBaseString = await HttpClient.delete(`payments/${id}`, {
-            form: this,
+            json: this,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

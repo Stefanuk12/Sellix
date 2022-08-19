@@ -76,7 +76,7 @@ export class Category {
     static async create(api_key: string, Data: ICategoryCreate){
         // Send request
         const response: ICategoryCreateResponse = await HttpClient.post("categories", {
-            form: Data,
+            json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }
@@ -96,7 +96,7 @@ export class Category {
     static async edit(api_key: string, id: string, Data: ICategoryEdit){
         // Send request
         const response: SellixBaseString = await HttpClient.put(`categories/${id}`, {
-            form: Data,
+            json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

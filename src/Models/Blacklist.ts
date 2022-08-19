@@ -75,7 +75,7 @@ export class Blacklist {
     // Creates a Blacklist and returns the Uniqid
     static async create(api_key: string, Data: IBlacklistCreate){
         const response: SellixBaseUniqid = await HttpClient.post("blacklist", {
-            form: Data,
+            json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }
@@ -95,7 +95,7 @@ export class Blacklist {
     static async edit(api_key: string, id: string, Data: IBlacklistEdit){
         // Send request
         const response: SellixBaseString = await HttpClient.put(`blacklists/${id}`, {
-            form: Data,
+            json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

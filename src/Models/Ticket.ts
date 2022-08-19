@@ -76,7 +76,7 @@ export class Ticket {
     static async reply(api_key: string, id: string, reply: string){
         // Send request
         const response: SellixBaseString = await HttpClient.post(`queries/reply/${id}`, {
-            form: {reply: reply},
+            json: {reply: reply},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

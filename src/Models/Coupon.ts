@@ -76,7 +76,7 @@ export class Coupon {
     static async create(api_key: string, Data: ICouponCreate){
         // Send request
         const response: SellixBaseUniqid = await HttpClient.post("coupons", {
-            form: Data,
+            json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }
@@ -97,7 +97,7 @@ export class Coupon {
     static async edit(api_key: string, id: string, Data: ICouponEdit){
         // Send request
         const response: SellixBaseString = await HttpClient.put(`coupons/${id}`, {
-            form: Data,
+            json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

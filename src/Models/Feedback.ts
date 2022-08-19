@@ -76,7 +76,7 @@ export class Feedback {
     static async replyTo(api_key: string, id: string, reply: string){
         // Send request
         const response: SellixBaseString = await HttpClient.post(`feedback/${id}`, {
-            form: {reply: reply},
+            json: {reply: reply},
             headers: {
                 Authorization: `Bearer ${api_key}`
             }

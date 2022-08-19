@@ -77,7 +77,7 @@ export class Product implements Record<string, any> {
     static async create(api_key: string, Data: IProductCreateEdit){
         // Send response
         const response: SellixBaseUniqid = await HttpClient.post("products", {
-            form: Data,
+            json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }
@@ -97,7 +97,7 @@ export class Product implements Record<string, any> {
     static async edit(api_key: string, id: string, Data: IProductCreateEdit){
         // Send response
         const response: SellixBaseString = await HttpClient.put(`products/${id}`, {
-            form: Data,
+            json: Data,
             headers: {
                 Authorization: `Bearer ${api_key}`
             }
